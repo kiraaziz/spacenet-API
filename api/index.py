@@ -3,14 +3,13 @@ from bs4 import BeautifulSoup
 import re
 from flask import Flask
 
-url = 'https://spacenet.tn'
-
 def transform_value(input_value):
     cleaned_value = re.sub(r'[^\d]+', '', input_value.replace('\xa0', ''))
     numeric_value = int(cleaned_value)
     return numeric_value
 
 def use_get_all_categories():
+    url = 'https://spacenet.tn'
     result = []
     response = requests.get(url)
 
@@ -40,6 +39,7 @@ def use_get_all_categories():
     return result
     
 def use_get_category_total_pages(id):
+    url = 'https://spacenet.tn'
     result = 1
     response = requests.get(url+"/"+str(id))
 
@@ -59,6 +59,7 @@ def use_get_category_total_pages(id):
 
 # orders = [position.asc, date_add.desc, name.asc, name.desc, price.desc, price.asc, quantity.desc, random.desc]
 def use_get_category_items(id, page=1, order="random.desc"):
+    url = 'https://spacenet.tn'
 
     result = []
 
@@ -89,6 +90,7 @@ def use_get_category_items(id, page=1, order="random.desc"):
 
 def use_get_item_details(id):
     
+    url = 'https://spacenet.tn'
     response = requests.get(url+"/"+str(id)+".html")
 
     if response.status_code == 200:
@@ -137,3 +139,7 @@ def items(id):
 @app.route('/item/<string:id>')
 def item(id):
     return use_get_item_details(id)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
