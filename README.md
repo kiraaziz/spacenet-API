@@ -1,4 +1,5 @@
 # SpaceNet Scraper API Documentation
+![Project Logo](https://github.com/kiraaziz/spacenet-API/blob/main/assets/screen.png)
 
 Welcome to the SpaceNet Scraper API documentation. This API allows you to retrieve information about categories, items, and detailed product information from the SpaceNet website.
 
