@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import re
-from flask import Flask
+from flask import Flask, request
 
 def transform_value(input_value):
     cleaned_value = re.sub(r'[^\d]+', '', input_value.replace('\xa0', ''))
@@ -132,9 +132,10 @@ def list():
 def page(id):
     return {"total" : use_get_category_total_pages(id)}
 
-@app.route('/category/items/<string:id>')
+@app.route('/category/items/<string:id>', methods=['GET'])
 def items(id):
-    return {"total" : use_get_category_items(id)}
+    print(request.args.get("page"))
+    return {"total" : use_get_category_items(id, page=request.args.get("page"))}
 
 @app.route('/item/<string:id>')
 def item(id):
