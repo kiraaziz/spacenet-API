@@ -213,7 +213,7 @@ async function getItemsInCategory(categoryId, page) {
   }
 }
 
-getItemsInCategory('203-pc-gamer-tunisie', 1);
+getItemsInCategory('18-ordinateur-portable', 3);
 ```
 
 ### Example 4: Retrieve Item Details
